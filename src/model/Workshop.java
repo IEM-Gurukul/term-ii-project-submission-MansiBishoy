@@ -9,6 +9,8 @@ public class Workshop extends Event{
     }
     @Override
     public String toString(){
-        return "[Workshop]" + getName() + " by "+instructor;
-    } 
-}
+        return "[Workshop]" + getName() + " | Date: " + getDate() + " | Instructor: " + instructor;
+    }
+
+} 
+
