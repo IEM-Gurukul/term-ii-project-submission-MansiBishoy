@@ -1,6 +1,7 @@
 package controller;
 
 import model.Event;
+import model.Workshop;
 import view.EventView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,28 +27,28 @@ public class EventController {
     }
     private void addEvent(){
         //Getting Data from View
-        String name=view.nameField.getText();
-        String date=view.dateField.getText();
-        String location=view.locationField.getText();
+        String name=view.nameField.getText().trim();
+        String date=view.dateField.getText().trim();
+        String location=view.locationField.getText().trim();
 
-        if(!name.isEmpty()){
-            //2. Creating a Model object
-            Event newEvent = new Event(name, date, location);
-            eventList.add(newEvent);
-
-            //3. Updating the View
-            view.displayArea.append("Added: " + name + " on " + date + " at " + location + "\n");
-
-            //4. Clear fields for next entry
-            view.nameField.setText("");
-            view.dateField.setText("");
-            view.locationField.setText("");
-
-        }
+        
         if(name.isEmpty()||date.isEmpty()){
            JOptionPane.showMessageDialog(view, "Name and Date cannot be empty!", "Input Error", JOptionPane.ERROR_MESSAGE);
     return;
         }
+        Event newEntry;
+        if(name.toLowerCase().contains("workshop")){
+            newEntry = new Workshop(name, date, location, "Industry Expert");
+        
+        } else {
+            newEntry = new Event(name, date, location);
+        }
+        eventList.add(newEntry);
+        view.displayArea.append(newEntry.toString() + "\n");
+        //Clear Input Fields
+        view.nameField.setText("");
+        view.dateField.setText(""); 
+        view.locationField.setText("");
     }
 }
     
