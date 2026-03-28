@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class EventController {
     private EventView view;
     private ArrayList<Event> eventList;
@@ -41,6 +43,10 @@ public class EventController {
             view.dateField.setText("");
             view.locationField.setText("");
 
+        }
+        if(name.isEmpty()||date.isEmpty()){
+           JOptionPane.showMessageDialog(view, "Name and Date cannot be empty!", "Input Error", JOptionPane.ERROR_MESSAGE);
+    return;
         }
     }
 }
