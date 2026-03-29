@@ -9,7 +9,7 @@ public class Workshop extends Event{
     }
     @Override
     public String toString(){
-        return "[Workshop]" + getName() + " | Date: " + getDate() + " | Instructor: " + instructor;
+        return "[WORKSHOP]" + getName() + " | Date: " + getDate() + " | Instructor: " + instructor;
     }
 
 } 
