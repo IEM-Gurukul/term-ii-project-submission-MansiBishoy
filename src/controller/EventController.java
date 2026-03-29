@@ -48,12 +48,23 @@ public class EventController {
         String date=view.dateField.getText().trim();
         String location=view.locationField.getText().trim();
 
-        
-        if(name.isEmpty()||date.isEmpty()){
-           JOptionPane.showMessageDialog(view, "Name and Date cannot be empty!", "Input Error", JOptionPane.ERROR_MESSAGE);
-    return;
+        //Validation Checking for improper format
+        if(name.isEmpty()||date.isEmpty()||location.isEmpty()){
+            JOptionPane.showMessageDialog(view, "Please fill in all fields.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        return;
         }
-        
+        //Date Checking
+        String datePattern="^\\d{2}/\\d{2}/\\d{4}$";
+        if (!date.matches(datePattern)) {
+        JOptionPane.showMessageDialog(view, "Please enter the date in the format DD/MM/YYYY.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+        //Location Checking
+        if (location.length()<3) {
+            JOptionPane.showMessageDialog(view, "Please enter a valid location (at least 3 characters).", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         Event newEntry;
         String typeLabel;
 
