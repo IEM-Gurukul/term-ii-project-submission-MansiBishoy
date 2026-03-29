@@ -26,8 +26,20 @@ public class EventController {
         });
 
         this.view.deleteButton.addActionListener(e -> {
-    view.tableModel.setRowCount(0); // Clears the table in one line!
-    eventList.clear();
+            int selectedRow = view.eventTable.getSelectedRow();
+    
+            if (selectedRow != -1) { // -1 means no row is selected
+            view.tableModel.removeRow(selectedRow);
+            eventList.remove(selectedRow);
+        } 
+            else {
+            // Fallback: If nothing is selected, clear everything (or show a message)
+            int confirm = JOptionPane.showConfirmDialog(view, "No row selected. Clear all events?", "Confirm", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
+            view.tableModel.setRowCount(0);
+            eventList.clear();
+            }
+        }
     });
     }
     private void addEvent(){
@@ -63,7 +75,7 @@ public class EventController {
             newEntry.getDate(),
             newEntry.getLocation()
         });
-        
+
         //Clear Input Fields
         view.nameField.setText("");
         view.dateField.setText(""); 
