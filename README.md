@@ -28,6 +28,7 @@ The primary target users are Campus Event Coordinators and Student Club Leads. T
 - Inheritance: The Workshop class extends Event, inheriting its core properties.
 - Polymorphism: Using a single ArrayList<Event> to store both Event and Workshop objects and overriding the toString() method.
 - Exception Handling: Used JOptionPane and Regex to handle invalid date formats and empty inputs.
+Used try-catch blocks with DateTimeParseException to handle invalid calendar dates
 - Collections: Utilized ArrayList to manage dynamic data storage.
 
 ---
@@ -40,11 +41,39 @@ The application follows the Model-View-Controller (MVC) architectural pattern to
 
 - View Layer (EventView): A Swing-based graphical interface that utilizes a JTable and DefaultTableModel for structured data presentation and user interaction.
 
-- Controller Layer (EventController): Acts as the intermediary "brain." It manages the application flow, performs Regex-based validation, and handles Exceptions during data processing.
+- Controller Layer (EventController): Acts as the intermediary "brain." It manages the application flow, performs Regex-based validation , and handles Exceptions during data processing.
+
 
 ## How to Run
 
----
+- Prerequisites: Ensure Java JDK 17 (or higher) and VS Code (with Extension Pack for Java) are installed.
+
+- Clone the Repository: git clone https://github.com/MansiBishoy/term-ii-project-submission-MansiBishoy.git
+
+- Open in VS Code: Open the folder and navigate to the src directory.
+
+- Execute: Locate Main.java in the root or main package, right-click, and select Run Java.
+
+- Alternative (Terminal):
+
+javac -d bin src/**/*.java
+
+java -cp bin main.Main
 
 ## Git Discipline Notes
-Minimum 10 meaningful commits required.
+This project was developed using a strict Atomic Commit Strategy to ensure a high-quality, traceable development lifecycle. Rather than bulk-uploading code, the project was built incrementally across 15 distinct commits.
+
+Key Disciplines Followed:
+Feature Branching & Synchronization: Regular use of git pull and git push to maintain a clean synchronization between the local development environment and the remote repository.
+
+Atomic Commits: Each commit addresses a single logical change (e.g., separating the MVC structure setup from Regex validation logic).
+
+Standardized Commit Messages: Used the Conventional Commits format to categorize changes:
+
+feat: New functional features (e.g., Adding Workshop subclass).
+
+fix: Critical bug fixes (e.g., Implementing STRICT date parsing for April 31st).
+
+docs: Documentation updates (README, UML diagrams, Reports).
+
+refactor: Code improvements without changing functionality.
