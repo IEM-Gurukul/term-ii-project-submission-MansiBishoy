@@ -67,7 +67,8 @@ public class EventController {
 
         // 2. Exception Handling (Calendar Logic Check)
         try {
-            DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy").withResolverStyle(java.time.format.ResolverStyle.STRICT);;
+            // Change yyyy to uuuu for STRICT mode compatibility
+            DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(java.time.format.ResolverStyle.STRICT);
             java.time.LocalDate.parse(date, df); 
 
             Event newEntry;
